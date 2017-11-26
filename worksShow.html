@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>worksShow</title>
+		<style type="text/css">
+		   body{
+	           background-color: #333;
+              }
+            p{
+            	text-align: center;
+                color: white;
+                font-size: 30px;
+            }
+            a{
+				text-decoration: none;
+			}
+			.box{
+				width: 1000px;
+				height: 220px;
+				margin:50px auto;
+			}
+			.box .link{
+				float: left;
+				margin: 0 20px;
+				width: 205px;
+				height: 280px;
+				position: relative;
+			}
+			.box .link .icon:hover{
+				transform: rotate(360deg) scale(1.2);
+				-webkit-transform: rotate(360deg) scale(1.2);
+				-moz-transform: rotate(360deg) scale(1.2);
+				-o-transform: rotate(360deg) scale(1.2);
+			}
+			.box .link .button{
+				display: block;
+			    width: 180px;
+			    height: 50px;
+			    border: 2px solid rgba(255,255,255,0.8);
+			    line-height: 50px;
+			    color: #2dcb70;
+			    font-size: 18px;
+			    font-weight: 700;
+			    padding: 0 0 0 20px;
+			    box-sizing: border-box;
+			    margin: auto;
+			    background: url() no-repeat 130px center;
+			    transition: 0.4s ease;
+			    -webkit-transition: 0.4s ease;
+			    position: relative;
+			}
+			.box .link .button:hover{
+				background-position: 140px center;
+			    border-color: rgba(255,255,255,1);
+			}
+			.box .link .button .line{
+				position: absolute;
+				display: block;
+			    background: none;
+			    transition: 0.4s ease;
+			    -webkit-transition: 0.4s ease;
+			}
+			.box .link .button .line-top{
+				left: -100%;
+				top: -2px ;
+				width: 0;
+				height: 2px;
+			}
+			.box .link .button:hover .line-top{
+				width: 180px;
+				background-color: #fff;
+				position: absolute;
+			    left: -2px;
+			    top: -2px;
+			}
+			.box .link .button .line-left{
+				width: 2px;
+				height: 0;
+				bottom: -100%;
+				left: -2px;
+			}
+			.box .link .button:hover .line-left{
+			    height: 50px;
+			    background: #fff;
+			    left: -2px;
+			    bottom: -2px;
+			}
+			.box .link .button .line-right{
+				width: 2px;
+				height: 0;
+				top: -100%;
+				right: -2px;
+			}
+			.box .link .button:hover .line-right{
+			    height: 50px;
+			    background-color: #ffffff;
+			    top: -2px;
+			    right: -2px;
+			}
+			.box .link .button .line-bottom{
+				right: -100%;
+				width: 0;
+				height: 2px;
+				bottom: -2px;
+			}
+			.box .link .button:hover .line-bottom{
+				right: -2px;
+				bottom: -2px;
+				background-color: #ffffff;
+				width: 180px;
+			}
+			.box .tooltip{
+				position: absolute;
+				padding: 0 15px;
+				height: 35px;
+				background-color: #2DCB70;
+				border-radius: 5px;
+				line-height: 35px;
+				margin: 0 auto;
+				color: #ffffff;
+				font-size:18px;
+				font-weight:700;
+				opacity: 0;
+			}
+			.box .tooltip span{
+				position: absolute;
+				width: 0;
+				height: 0;
+				border: 8px solid transparent;
+				border-top-color: #2DCB70;
+				left: 50%;
+				margin-left: -4px;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<p>作品展示</p>
+		<div class="box">
+			<div class="link link-miss">
+				<a href="https://liuyanyu.github.io/joke/" class="button" data-text="https://liuyanyu.github.io/joke/">
+					<span class="line line-top"></span>
+					<span class="line line-left"></span>
+					<span class="line line-right"></span>
+					<span class="line line-bottom"></span>
+				  笑话 
+				</a>
+			</div>
+			<div class="link link-play">
+				<a href="https://liuyanyu.github.io/Bangdan/" class="button" data-text="https://liuyanyu.github.io/Bangdan/">
+					<span class="line line-top"></span>
+					<span class="line line-left"></span>
+					<span class="line line-right"></span>
+					<span class="line line-bottom"></span>
+				歌曲榜单
+				</a>
+			</div>
+			<div class="link link-touch" >
+				<a href=" https://liuyanyu.github.io/douban/" class="button" data-text=" https://liuyanyu.github.io/douban/">
+					<span class="line line-top"></span>
+					<span class="line line-left"></span>
+					<span class="line line-right"></span>
+					<span class="line line-bottom"></span>
+				豆瓣电影
+				</a>
+			</div>
+			<div class="link link-touch" >
+				<a href="https://liuyanyu.github.io/QiuShiBaiKe/" class="button" data-text="https://liuyanyu.github.io/QiuShiBaiKe/">
+					<span class="line line-top"></span>
+					<span class="line line-left"></span>
+					<span class="line line-right"></span>
+					<span class="line line-bottom"></span>
+				糗事百科
+				</a>
+			</div>
+			<div class="tooltip">
+				<em></em>
+				<span></span>
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$(".button").hover(function() {
+					var titleText=$(this).attr("data-text");
+					//动态获取内容并添加
+					$(".tooltip em").text(titleText);
+					//获取距离左边的位置
+					var leftLoc=$(this).offset().left;
+					var addleft=($(".tooltip").outerWidth()-$(this).outerWidth())/2;
+					$(".tooltip").css({
+						left:leftLoc-addleft,
+						top:140
+					}).animate({
+						top:195,
+						opacity:1
+					},300)
+				},function() {
+					
+				})
+			})
+		</script>
+	</body>
+</html>
